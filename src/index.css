@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  /* 🎨 PALETA DE COLORES "WARM CLAY" */
+  --color-almond: #F1D9C6;      /* Fondo Base */
+  --color-cashmere: #E6B798;    /* Tonos medios */
+  --color-whiskey: #D59E7B;     /* Tonos tierra */
+  --color-copperfield: #D68E61; /* Naranja quemado suave */
+  --color-fuzzy: #C76D4D;       /* Acento principal (Botones) */
+  --color-espresso: #2A1B15;    /* Texto principal (Casi negro) */
+  
+  /* ✒️ TIPOGRAFÍA */
+  --font-clash: 'Clash Display', sans-serif;
+  --font-sans: 'General Sans', 'Inter', sans-serif;
+
+  /* ✨ ANIMACIONES PERSONALIZADAS (Para el efecto líquido) */
+  --animate-blob: blob 7s infinite;
+  
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+}
+
+/* Estilos Globales para el Body */
+body {
+  background-color: var(--color-almond);
+  color: var(--color-espresso);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
