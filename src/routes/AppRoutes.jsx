@@ -3,7 +3,7 @@ import MainLayout from '../components/layouts/MainLayout';
 
 //Importacion de paginas
 import Home from '../pages/Home';
-
+import NewProducts from '../pages/NewProducts';
 
 const AppRoutes = () =>{
     return(
@@ -12,6 +12,7 @@ const AppRoutes = () =>{
             <Route path='/' element={<MainLayout/>}>
             {/*Inicias rutas*/}
             <Route index element={<Home/>}/>
+            <Route path='novedades' element={<NewProducts/>}/>
 
             {/*Ruta: Inicio*/}
 
