@@ -38,7 +38,7 @@ const Collection = () => {
         {/*Seccion 2: Titulo y subtitulo*/}
         <section className="px-6 md:px-10 mb-8">
           <div className="max-w-7xl mx-auto">
-            <div className="">
+            <div >
               <h3 className="text-3xl font-clash  font-semibold mb-10 text-espresso text-center">
                 La seleccion definitiva{" "}
               </h3>

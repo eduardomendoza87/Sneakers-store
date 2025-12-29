@@ -7,7 +7,7 @@ import NewProducts from '../pages/NewProducts';
 import MenCollection from '../pages/MenCollection';
 import WomenCollection from '../pages/WomenCollection';
 import Collection from '../pages/Collection';
-
+import CollectionDetails from '../pages/CollectionDetails';
 const AppRoutes = () =>{
     return(
         <Routes>
@@ -19,6 +19,7 @@ const AppRoutes = () =>{
             <Route path='/hombre' element={<MenCollection/>}/>
             <Route path='/mujer' element={<WomenCollection/>}/>
             <Route path='/coleccion' element={<Collection/>}/>
+            <Route path="/coleccion/:collectionId" element={<CollectionDetails/>}/>
             {/*Ruta: Inicio*/}
 
             </Route>
