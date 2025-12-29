@@ -1,4 +1,4 @@
-# 👟 SNEAKER VAULT | Luxury E-Commerce Experience
+# 👟 SNEAKER STORE| Luxury E-Commerce Experience
 
 ![Project Banner](https://via.placeholder.com/1200x600?text=SNEAKER+VAULT+PREVIEW)
 
