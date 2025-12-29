@@ -6,6 +6,7 @@ import Home from '../pages/Home';
 import NewProducts from '../pages/NewProducts';
 import MenCollection from '../pages/MenCollection';
 import WomenCollection from '../pages/WomenCollection';
+import Collection from '../pages/Collection';
 
 const AppRoutes = () =>{
     return(
@@ -17,7 +18,7 @@ const AppRoutes = () =>{
             <Route path='/novedades' element={<NewProducts/>}/>
             <Route path='/hombre' element={<MenCollection/>}/>
             <Route path='/mujer' element={<WomenCollection/>}/>
-
+            <Route path='/coleccion' element={<Collection/>}/>
             {/*Ruta: Inicio*/}
 
             </Route>
