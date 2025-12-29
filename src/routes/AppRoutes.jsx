@@ -5,6 +5,7 @@ import MainLayout from '../components/layouts/MainLayout';
 import Home from '../pages/Home';
 import NewProducts from '../pages/NewProducts';
 import MenCollection from '../pages/MenCollection';
+import WomenCollection from '../pages/WomenCollection';
 
 const AppRoutes = () =>{
     return(
@@ -15,6 +16,7 @@ const AppRoutes = () =>{
             <Route index element={<Home/>}/>
             <Route path='/novedades' element={<NewProducts/>}/>
             <Route path='/hombre' element={<MenCollection/>}/>
+            <Route path='/mujer' element={<WomenCollection/>}/>
 
             {/*Ruta: Inicio*/}
 

@@ -56,8 +56,12 @@
     "isFeatured": true,
     "description": "Tonos tierra enriquecidos. El colorway Truffle aporta calidez a la colección con una mezcla de borgoña apagado y grises orgánicos, evocando la naturaleza en su estado más puro.",
     "images": [
-      "/images/nb-9060-truffle-1.png",
-      "/images/nb-9060-truffle-2.png"
+      "/images/products/new-balance/9060/truffle/9060-truffle-main.png",
+      "/images/products/new-balance/9060/truffle/9060-truffle-1.png",
+      "/images/products/new-balance/9060/truffle/9060-truffle-2.png",
+      "/images/products/new-balance/9060/truffle/9060-truffle-3.png"
+
+      
     ]
   },
   {
@@ -116,7 +120,13 @@
     "isFeatured": false,
     "description": "Minimalismo en tonos arena. Esta edición Mid presenta acabados en cuero mate color almendra y una suela de goma natural, perfecta para combinar con paletas neutras.",
     "images": [
-      "/images/aj1-tan-1.png"
+     "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-main.png",
+     "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-1.png",
+     "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-2.png",
+     "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-3.png"
+
+
+
     ]
   },
   {
@@ -153,7 +163,10 @@
     "isFeatured": false,
     "description": "Elegancia discreta. Con una suela translúcida helada y paneles en gris lobo, esta silueta baja ofrece versatilidad diaria sin sacrificar el legado Jordan.",
     "images": [
-      "/images/aj1-grey-1.png"
+      "/images/products/nike/jordan-1/wolf-grey/jordan-1-low-wolf-grey-main.png",
+      "/images/products/nike/jordan-1/wolf-grey/jordan-1-low-wolf-grey-1.png",
+      "/images/products/nike/jordan-1/wolf-grey/jordan-1-low-wolf-grey-2.png",
+      "/images/products/nike/jordan-1/wolf-grey/jordan-1-low-wolf-grey-3.png"
     ]
   },
   {
@@ -207,7 +220,13 @@
     "isFeatured": false,
     "description": "Suavidad visual. Un tono azul cielo pastel envuelve la gamuza premium, creando un contraste fresco y juvenil con las franjas blancas sobredimensionadas.",
     "images": [
-      "/images/campus-blue-1.png"
+      "/images/products/adidas/campus/ambient-sky/adidas-campus-ambient-sky-main.png",
+      "/images/products/adidas/campus/ambient-sky/adidas-campus-ambient-sky-1.png",
+      "/images/products/adidas/campus/ambient-sky/adidas-campus-ambient-sky-2.png",
+      "/images/products/adidas/campus/ambient-sky/adidas-campus-ambient-sky-3.png"
+
+
+
     ]
   },
   {
