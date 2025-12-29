@@ -1,7 +1,6 @@
 # 👟 SNEAKER VAULT | Luxury E-Commerce Experience
 
 ![Project Banner](https://via.placeholder.com/1200x600?text=SNEAKER+VAULT+PREVIEW)
-*(Reemplaza este link con una captura real de tu Hero Section una vez termines)*
 
 > **Redefiniendo el movimiento.** Una experiencia de compra inmersiva con estética editorial, diseño "Warm Clay" y arquitectura Frontend moderna.
 
