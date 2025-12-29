@@ -31,7 +31,7 @@ export default function Navbar() {
         {/* CONTENEDOR PRINCIPAL: Columna en móvil, Fila en escritorio */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
           
-          {/* 1. LOGO (Arriba en móvil, Izquierda en Desktop) */}
+          {/*  LOGO (Arriba en móvil, Izquierda en Desktop) */}
           <div className="w-full md:w-auto text-center md:text-left">
             <h1 
               onClick={() => handleNavigation('/', 'inicio')}
@@ -137,7 +137,7 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* --- MODALES EXISTENTES (Carrito y Búsqueda) --- */}
+      {/*  MODALES EXISTENTES (Carrito y Búsqueda) */}
       
       {/* MODAL CARRITO */}
       {isCartOpen && (

@@ -1,0 +1,307 @@
+[
+  {
+    "id": "nb-9060-sea-salt",
+    "name": "New Balance 9060",
+    "price": 3899,
+    "brand": "New Balance",
+    "model": "9060",
+    "collection": "9060-archive",
+    "gender": ["Hombre", "Mujer", "Unisex"],
+    "color": "Sea Salt",
+    "sizes": [23, 23.5, 24, 25, 26, 27, 28],
+    "isNew": true,
+    "isFeatured": true,
+    "description": "Una reinterpretación futurista de la serie 99X. El modelo 9060 combina la sofisticación del diseño Y2K con una estética orgánica y fluida. Confeccionados en malla transpirable y gamuza premium color sal marina.",
+    "images": [
+      "/images/products/new-balance/9060/sea-salt/9060-sea-salt.png",
+      "/images/products/new-balance/9060/sea-salt/9060-sea-salt-1.png",
+      "/images/products/new-balance/9060/sea-salt/9060-sea-salt-2.png",
+      "/images/products/new-balance/9060/sea-salt/9060-sea-salt-3.png"
+    ]
+  },
+  {
+    "id": "nb-9060-black-castlerock",
+    "name": "New Balance 9060",
+    "price": 3899,
+    "brand": "New Balance",
+    "model": "9060",
+    "collection": "9060-archive",
+    "gender": ["Hombre"],
+    "color": "Black Castlerock",
+    "sizes": [26, 26.5, 27, 27.5, 28, 29, 30],
+    "isNew": false,
+    "isFeatured": false,
+    "description": "Oscuridad y textura. La edición Castlerock presenta una paleta monocromática profunda, ideal para quienes buscan una silueta arquitectónica con un perfil sobrio y elegante.",
+    "images": [
+      "/images/products/new-balance/9060/black-castlerock/9060-black-castlerock-main.png",
+      "/images/products/new-balance/9060/black-castlerock/9060-black-castlerock-1.png",
+      "/images/products/new-balance/9060/black-castlerock/9060-black-castlerock-2.png",
+      "/images/products/new-balance/9060/black-castlerock/9060-black-castlerock-3.png"
+
+
+
+    ]
+  },
+  {
+    "id": "nb-9060-truffle",
+    "name": "New Balance 9060",
+    "price": 3899,
+    "brand": "New Balance",
+    "model": "9060",
+    "collection": "9060-archive",
+    "gender": ["Mujer", "Unisex"],
+    "color": "Truffle",
+    "sizes": [23, 24, 25, 26],
+    "isNew": true,
+    "isFeatured": true,
+    "description": "Tonos tierra enriquecidos. El colorway Truffle aporta calidez a la colección con una mezcla de borgoña apagado y grises orgánicos, evocando la naturaleza en su estado más puro.",
+    "images": [
+      "/images/nb-9060-truffle-1.png",
+      "/images/nb-9060-truffle-2.png"
+    ]
+  },
+  {
+    "id": "nb-9060-rain-cloud",
+    "name": "New Balance 9060",
+    "price": 3899,
+    "brand": "New Balance",
+    "model": "9060",
+    "collection": "9060-archive",
+    "gender": ["Hombre", "Unisex"],
+    "color": "Rain Cloud",
+    "sizes": [25, 26, 27, 28, 29],
+    "isNew": false,
+    "isFeatured": false,
+    "description": "El gris clásico de New Balance, elevado. Una ejecución impecable en gamuza suave que rinde homenaje a la herencia de la marca mientras mira hacia el futuro.",
+    "images": [
+            "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-main.png",
+            "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-1.png",
+            "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-2.png",
+            "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-3.png"
+
+
+    ]
+  },
+  {
+    "id": "nike-aj1-dark-mocha",
+    "name": "Air Jordan 1 High OG",
+    "price": 4599,
+    "brand": "Nike",
+    "model": "Air Jordan 1",
+    "collection": "jordan-retro",
+    "gender": ["Hombre"],
+    "color": "Dark Mocha",
+    "sizes": [26, 27, 28, 28.5, 29, 30],
+    "isNew": false,
+    "isFeatured": true,
+    "description": "El equilibrio perfecto entre el café espresso y el cuero negro premium. Una de las combinaciones más codiciadas, aportando una estética de lujo relajado a la silueta más icónica del baloncesto.",
+    "images": [
+      "/images/products/nike/jordan-1/dark-mocha/jordan-1-dark-mocha-main.png",
+      "/images/products/nike/jordan-1/dark-mocha/jordan-1-dark-mocha-1.png",
+      "/images/products/nike/jordan-1/dark-mocha/jordan-1-dark-mocha-2.png",
+      "/images/products/nike/jordan-1/dark-mocha/jordan-1-dark-mocha-3.png"
+    ]
+  },
+  {
+    "id": "nike-aj1-mid-tan-gum",
+    "name": "Air Jordan 1 Mid",
+    "price": 3299,
+    "brand": "Nike",
+    "model": "Air Jordan 1",
+    "collection": "jordan-retro",
+    "gender": ["Mujer", "Unisex"],
+    "color": "Tan Gum",
+    "sizes": [23, 24, 25, 26],
+    "isNew": true,
+    "isFeatured": false,
+    "description": "Minimalismo en tonos arena. Esta edición Mid presenta acabados en cuero mate color almendra y una suela de goma natural, perfecta para combinar con paletas neutras.",
+    "images": [
+      "/images/aj1-tan-1.png"
+    ]
+  },
+  {
+    "id": "nike-aj1-lost-and-found",
+    "name": "Air Jordan 1 High OG",
+    "price": 5299,
+    "brand": "Nike",
+    "model": "Air Jordan 1",
+    "collection": "jordan-retro",
+    "gender": ["Hombre", "Unisex"],
+    "color": "Chicago (Lost & Found)",
+    "sizes": [25, 26, 27, 28, 29],
+    "isNew": false,
+    "isFeatured": true,
+    "description": "Historia envejecida. El colorway 'Lost & Found' reimagina el clásico Chicago con detalles de cuero craquelado, evocando un par original de 1985 encontrado en un almacén olvidado.",
+    "images": [
+      "/images/products/nike/jordan-1/chicago/jordan-1-chicago-main.png",
+      "/images/products/nike/jordan-1/chicago/jordan-1-chicago-1.png",
+      "/images/products/nike/jordan-1/chicago/jordan-1-chicago-2.png",
+      "/images/products/nike/jordan-1/chicago/jordan-1-chicago-3.png"
+    ]
+  },
+  {
+    "id": "nike-aj1-low-wolf-grey",
+    "name": "Air Jordan 1 Low",
+    "price": 2899,
+    "brand": "Nike",
+    "model": "Air Jordan 1",
+    "collection": "jordan-retro",
+    "gender": ["Mujer", "Unisex"],
+    "color": "Wolf Grey",
+    "sizes": [23, 24, 25, 26, 27],
+    "isNew": true,
+    "isFeatured": false,
+    "description": "Elegancia discreta. Con una suela translúcida helada y paneles en gris lobo, esta silueta baja ofrece versatilidad diaria sin sacrificar el legado Jordan.",
+    "images": [
+      "/images/aj1-grey-1.png"
+    ]
+  },
+  {
+    "id": "adidas-campus-bark",
+    "name": "Adidas Campus 00s",
+    "price": 2499,
+    "brand": "Adidas",
+    "model": "Campus 00s",
+    "collection": "adidas-campus",
+    "gender": ["Hombre", "Unisex"],
+    "color": "Bark",
+    "sizes": [24, 25, 26, 27, 28],
+    "isNew": true,
+    "isFeatured": true,
+    "description": "Volumen y textura. Inspiradas en el skate de los 2000, estas Campus en color corteza presentan una silueta robusta, lengüeta acolchada y gamuza de pelo largo.",
+    "images": [
+     "/images/products/adidas/campus/bark/adidas-campus-bark-main.png",
+     "/images/products/adidas/campus/bark/adidas-campus-bark-1.png",
+    "/images/products/adidas/campus/bark/adidas-campus-bark-2.png",
+    "/images/products/adidas/campus/bark/adidas-campus-bark-3.png"
+    ]
+  },
+  {
+    "id": "adidas-campus-grey-white",
+    "name": "Adidas Campus 00s",
+    "price": 2499,
+    "brand": "Adidas",
+    "model": "Campus 00s",
+    "collection": "adidas-campus",
+    "gender": ["Unisex"],
+    "color": "Grey White",
+    "sizes": [23, 24, 25, 26, 27, 28],
+    "isNew": false,
+    "isFeatured": false,
+    "description": "El nuevo estándar urbano. Gris neutro sobre una mediasuela 'off-white' para un look vintage instantáneo que combina con absolutamente todo.",
+    "images": [
+      "/images/campus-grey-1.png"
+    ]
+  },
+  {
+    "id": "adidas-campus-ambient-sky",
+    "name": "Adidas Campus 00s",
+    "price": 2499,
+    "brand": "Adidas",
+    "model": "Campus 00s",
+    "collection": "adidas-campus",
+    "gender": ["Mujer"],
+    "color": "Ambient Sky",
+    "sizes": [23, 24, 25, 26],
+    "isNew": true,
+    "isFeatured": false,
+    "description": "Suavidad visual. Un tono azul cielo pastel envuelve la gamuza premium, creando un contraste fresco y juvenil con las franjas blancas sobredimensionadas.",
+    "images": [
+      "/images/campus-blue-1.png"
+    ]
+  },
+  {
+    "id": "adidas-campus-core-black",
+    "name": "Adidas Campus 00s",
+    "price": 2499,
+    "brand": "Adidas",
+    "model": "Campus 00s",
+    "collection": "adidas-campus",
+    "gender": ["Hombre"],
+    "color": "Core Black",
+    "sizes": [26, 27, 28, 29],
+    "isNew": false,
+    "isFeatured": false,
+    "description": "La definición de atemporal. Negro profundo, suela blanca y el inconfundible trifolio. Diseñadas para resistir el uso rudo con estilo impecable.",
+    "images": [
+      "/images/products/adidas/campus/core-black/adidas-campus-core-black-main.png",
+      "/images/products/adidas/campus/core-black/adidas-campus-core-black-1.png",
+      "/images/products/adidas/campus/core-black/adidas-campus-core-black-2.png",
+      "/images/products/adidas/campus/core-black/adidas-campus-core-black-3.png"
+    ]
+  },
+  {
+    "id": "puma-dark-myrtle",
+    "name": "Puma Suede Classic",
+    "price": 1999,
+    "brand": "Puma",
+    "model": "Suede",
+    "collection": "puma-suede",
+    "gender": ["Hombre", "Unisex"],
+    "color": "Dark Myrtle",
+    "sizes": [25, 26, 27, 28],
+    "isNew": true,
+    "isFeatured": false,
+    "description": "Icono desde 1968. Esta versión en verde oliva conecta con la tendencia de tonos naturales, manteniendo la silueta baja y ágil que definió la cultura hip-hop.",
+    "images": [
+      "/images/products/puma/suede/dark-myrtle/puma-dark-myrtle-main.png",
+      "/images/products/puma/suede/dark-myrtle/puma-dark-myrtle-1.png",
+      "/images/products/puma/suede/dark-myrtle/puma-dark-myrtle-2.png",
+      "/images/products/puma/suede/dark-myrtle/puma-dark-myrtle-3.png"
+    ]
+  },
+  {
+    "id": "puma-suede-navy",
+    "name": "Puma Suede Classic",
+    "price": 1999,
+    "brand": "Puma",
+    "model": "Suede",
+    "collection": "puma-suede",
+    "gender": ["Unisex"],
+    "color": "Navy Blue",
+    "sizes": [24, 25, 26, 27, 28],
+    "isNew": false,
+    "isFeatured": false,
+    "description": "Profundidad en azul. Gamuza rica y saturada combinada con la franja blanca característica. Un básico esencial para cualquier rotación minimalista.",
+    "images": [
+      "/images/puma-navy-1.png"
+    ]
+  },
+  {
+    "id": "puma-suede-red",
+    "name": "Puma Suede Classic",
+    "price": 1999,
+    "brand": "Puma",
+    "model": "Suede",
+    "collection": "puma-suede",
+    "gender": ["Unisex"],
+    "color": "High Risk Red",
+    "sizes": [23, 24, 25, 26, 27, 28],
+    "isNew": false,
+    "isFeatured": true,
+    "description": "Audacia pura. Un rojo vibrante que captura miradas, ideal para quienes buscan hacer una declaración de estilo sin complicaciones.",
+    "images": [
+      "/images/puma-red-1.png"
+    ]
+  },
+  {
+    "id": "puma-suede-black-white",
+    "name": "Puma Suede Classic",
+    "price": 1999,
+    "brand": "Puma",
+    "model": "Suede",
+    "collection": "puma-suede",
+    "gender": ["Mujer", "Hombre", "Unisex"],
+    "color": "Black & White",
+    "sizes": [23, 24, 25, 26, 27, 28, 29],
+    "isNew": false,
+    "isFeatured": false,
+    "description": "El original. Blanco y negro en perfecto contraste. La zapatilla que ha trascendido generaciones, estilos y subculturas, manteniéndose siempre relevante.",
+    "images": [
+      "/images/products/puma/suede/black-white/puma-suede-black-white-main.png",
+      "/images/products/puma/suede/black-white/puma-suede-black-white-1.png",
+      "/images/products/puma/suede/black-white/puma-suede-black-white-2.png",
+      "/images/products/puma/suede/black-white/puma-suede-black-white-3.png"
+    ]
+  }
+]

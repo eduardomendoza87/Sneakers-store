@@ -4,6 +4,7 @@ import MainLayout from '../components/layouts/MainLayout';
 //Importacion de paginas
 import Home from '../pages/Home';
 import NewProducts from '../pages/NewProducts';
+import MenCollection from '../pages/MenCollection';
 
 const AppRoutes = () =>{
     return(
@@ -12,7 +13,8 @@ const AppRoutes = () =>{
             <Route path='/' element={<MainLayout/>}>
             {/*Inicias rutas*/}
             <Route index element={<Home/>}/>
-            <Route path='novedades' element={<NewProducts/>}/>
+            <Route path='/novedades' element={<NewProducts/>}/>
+            <Route path='/hombre' element={<MenCollection/>}/>
 
             {/*Ruta: Inicio*/}
 
