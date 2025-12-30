@@ -11,32 +11,31 @@ import PriceFilter from '../components/ui/PriceFilter';
 import SortFilter from '../components/ui/SortFilter';
 import SizeFilter from '../components/ui/SizeFilter';
 
-// CONTEXTO
+// Contextos
 import { useFavorites } from '../context/FavoritesContext';
+import { useCart } from '../context/CartContext'; 
 
 const CollectionDetails = () => {
-  // Obtener el ID de la URL 
   const { collectionId } = useParams();
 
-  //  ACTIVAR LA LÓGICA DE FAVORITOS
+  // ACTIVAR FAVORITOS
   const { toggleFavorite, isFavorite } = useFavorites();
+  
+  // ACTIVAR CARRITO
+  const { addToCart } = useCart();
 
-  // ENCONTRAR INFO DE LA COLECCIÓN 
   const currentCollectionInfo = allCollection.find(
     (item) => item.collectionId === collectionId
   );
 
-  // FILTRAR PRODUCTOS 
   const filteredProducts = products.filter(
     (product) => product.collection === collectionId
   );
 
-  // Scroll al inicio al cargar
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [collectionId]);
 
-  // Protección por si el usuario escribe una URL que no existe
   if (!currentCollectionInfo) {
     return <div className="text-center py-20">Colección no encontrada</div>;
   }
@@ -46,22 +45,16 @@ const CollectionDetails = () => {
         {/* Sección 1: Hero Dinámico */}
         <section className="px-6 md:px-10 py-12">
           <div className="relative w-full h-96 md:h-125 rounded-[2.5rem] overflow-hidden shadow-2xl">
-            {/* Hero imagen */}
             <img
               src={currentCollectionInfo.hero}
               alt={currentCollectionInfo.title}
               className="absolute inset-0 w-full h-full object-cover object-center"
-              onError={(e) => {
-                e.target.src =
-                  "https://via.placeholder.com/1200x600?text=No+Image";
-              }}
+              onError={(e) => { e.target.src = "https://via.placeholder.com/1200x600?text=No+Image"; }}
             />
             <div className="absolute inset-0 bg-black/20" />
             
-            {/* Texto */}
             <div className="absolute inset-0 flex items-center justify-center text-center p-8">
               <div className="max-w-3xl">
-                {/* Botón Volver */}
                 <Link
                   to="/coleccion"
                   className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors font-medium backdrop-blur-md bg-white/10 px-4 py-2 rounded-full border border-white/20"
@@ -85,9 +78,7 @@ const CollectionDetails = () => {
         <section className="px-6 md:px-10 mb-8">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <PriceFilter />
-              <SizeFilter />
-              <SortFilter />
+              <PriceFilter /> <SizeFilter /> <SortFilter />
             </div>
           </div>
         </section>
@@ -95,23 +86,17 @@ const CollectionDetails = () => {
         {/* Sección 3: Grid de Productos */}
         <section className="px-6 md:px-10 pb-24">
           <div className="max-w-7xl mx-auto">
-            {/* Contador de resultados */}
             <div className="mb-8 border-b border-espresso/10 pb-4">
               <p className="text-espresso font-clash font-medium text-lg">
-                Mostrando{" "}
-                <span className="font-bold">{filteredProducts.length}</span>{" "}
-                modelos exclusivos
+                Mostrando <span className="font-bold">{filteredProducts.length}</span> modelos exclusivos
               </p>
             </div>
 
-            {/* Grid */}
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 
-                {/*  MAPEO CON RETORNO EXPLÍCITO */}
                 {filteredProducts.map((item) => {
                   
-                  // Variable auxiliar
                   const isLiked = isFavorite(item.id);
 
                   return (
@@ -119,6 +104,7 @@ const CollectionDetails = () => {
                       key={item.id}
                       className="group relative bg-white/40 backdrop-blur-xl rounded-4xl p-5 border border-white/50 shadow-sm hover:shadow-2xl hover:bg-white/60 transition-all duration-500"
                     >
+                      {/* Info Básica */}
                       <div className="mb-4">
                         <h3 className="text-espresso font-clash font-bold text-lg leading-tight min-h-12">
                           {item.name}
@@ -127,7 +113,8 @@ const CollectionDetails = () => {
                           {item.color}
                         </p>
                       </div>
-                      
+
+                      {/* Imagen */}
                       <div className="relative h-52 mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                         <img
                           src={item.images[0]}
@@ -135,7 +122,8 @@ const CollectionDetails = () => {
                           className="w-full h-full object-contain drop-shadow-xl"
                         />
                       </div>
-                      
+
+                      {/* Precio */}
                       <div className="mb-6">
                         <span className="text-xl font-clash font-bold text-espresso">
                           {new Intl.NumberFormat("es-MX", {
@@ -144,43 +132,50 @@ const CollectionDetails = () => {
                           }).format(item.price)}
                         </span>
                       </div>
-                      
+
                       {/* Botones de Acción */}
                       <div className="flex flex-col gap-3">
                         <div className="flex gap-2">
+                          {/* Boton añadir */}
                           <button
                             type="button"
+                            onClick={() => addToCart(item)}
                             className="flex-1 bg-fuzzy text-almond text-sm font-bold px-4 py-3 rounded-xl shadow-lg hover:bg-copperfield active:scale-95 transition-all duration-300"
                           >
                             Añadir
                           </button>
 
-                          {/*  BOTÓN CORAZÓN ACTUALIZADO */}
+                          {/* Boton favoritos */}
                           <button
                             type="button"
                             onClick={() => toggleFavorite(item.id)}
                             className={`
                               p-3 rounded-xl border transition-all duration-300
-                              ${isLiked 
-                                ? "bg-red-100 border-red-200 hover:bg-red-200" 
-                                : "bg-white/50 border-white hover:bg-white hover:text-red-500"
+                              ${
+                                isLiked
+                                  ? "bg-red-100 border-red-200 hover:bg-red-200"
+                                  : "bg-white/50 border-white hover:bg-white hover:text-red-500"
                               }
                             `}
                             aria-label="Favoritos"
                           >
-                            <Heart 
-                              size={20} 
-                              className={`transition-colors ${isLiked ? "fill-red-500 text-red-500" : "text-espresso"}`}
+                            <Heart
+                              size={20}
+                              className={`transition-colors ${
+                                isLiked
+                                  ? "fill-red-500 text-red-500"
+                                  : "text-espresso"
+                              }`}
                             />
                           </button>
                         </div>
-
-                        <button
-                          type="button"
-                          className="w-full text-espresso text-sm font-semibold px-4 py-2.5 rounded-xl border border-espresso/20 hover:border-espresso hover:bg-espresso hover:text-white transition-all duration-300"
+                        {/* Ver detalles  */}
+                        <Link
+                          to={`/producto/${item.id}`} //url dinamica
+                          className="block w-full text-center text-espresso text-sm font-semibold px-4 py-2.5 rounded-xl border border-espresso/20 hover:border-espresso hover:bg-espresso hover:text-white transition-all duration-300"
                         >
                           Ver Detalles
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   );

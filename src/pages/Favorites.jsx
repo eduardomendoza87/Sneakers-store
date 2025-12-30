@@ -56,7 +56,7 @@ const FavoritesSneakers = () => {
                     {/* Imagen */}
                     <div className="relative h-48 mb-6 flex items-center justify-center">
                       <img
-                        src={item.images[0]} // Usamos la primera imagen
+                        src={item.images[0]} 
                         alt={item.name}
                         className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-5deg] drop-shadow-xl"
                       />
@@ -85,7 +85,6 @@ const FavoritesSneakers = () => {
                         className="p-3 rounded-full bg-red-100 border border-red-200 hover:bg-red-200 hover:scale-110 active:scale-95 transition-all duration-300 group/heart"
                         title="Quitar de favoritos"
                       >
-                        {/* El corazón aparece LLENO (fill-red-500) porque estamos en favoritos */}
                         <Heart
                           size={24}
                           className="text-red-500 fill-red-500"
@@ -105,7 +104,7 @@ const FavoritesSneakers = () => {
                 ))}
               </div>
             ) : (
-              /* --- Estado Vacío (Cuando no hay favoritos) --- */
+              /*  Estado Vacío (Cuando no hay favoritos) */
               <div className="flex flex-col items-center justify-center py-20 bg-white/20 rounded-[3rem] border border-white/30 backdrop-blur-sm text-center px-4">
                 <div className="bg-white/40 p-6 rounded-full mb-6">
                   <Heart size={64} className="text-espresso/30" />

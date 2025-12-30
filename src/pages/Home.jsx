@@ -10,18 +10,26 @@ import HeroHome from "../assets/home-assets/hero-home.png"
 import CarruselFeatures from "../components/ui/CarruselText";
 
 // Data
-import { Mostwanted } from "../data/Home";
-import { userReviews } from "../data/Home";
+import products from '../data/products.json'; 
+import { userReviews } from "../data/Home"; 
 
-// 1. IMPORTAR CONTEXTO DE FAVORITOS
+// Contextos
 import { useFavorites } from '../context/FavoritesContext';
+import { useCart } from '../context/CartContext'; 
 
 const Home = () => {
     // Estado para el formulario
     const [email, setEmail] = useState('');
 
-    // 2. ACTIVAR LÓGICA DE FAVORITOS
+    // ACTIVAR LÓGICA DE FAVORITOS Y CARRITO
     const { toggleFavorite, isFavorite } = useFavorites();
+    const { addToCart } = useCart();
+
+    // FILTRAR PRODUCTOS DESTACADOS 
+    const featuredProducts = products.filter(p => p.isFeatured).slice(0, 4);
+
+    // Helper de precio
+    const formatPrice = (price) => new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN" }).format(price);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -52,7 +60,7 @@ const Home = () => {
                   caminan su propio camino.
                 </p>
                 <Link
-                  to="/coleccion" // Corregido a singular según tus rutas
+                  to="/coleccion"
                   className="
                     inline-block
                     bg-fuzzy text-espresso text-lg font-semibold tracking-wide
@@ -107,7 +115,7 @@ const Home = () => {
           <CarruselFeatures />
         </section>
 
-        {/* Sección 3: Lo más buscado (AQUÍ LA ACTUALIZACIÓN CLAVE) */}
+        {/* Sección 3: Lo más buscado */}
         <section className="px-10 py-16">
           <div className="max-w-7xl mx-auto mb-12">
             <h2 className="text-espresso font-clash font-semibold text-4xl md:text-5xl mb-12">
@@ -115,11 +123,8 @@ const Home = () => {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {Mostwanted.map((item) => {
+              {featuredProducts.map((item) => {
                 
-                // 3. VARIABLE: ¿Es favorito este ítem de "Mostwanted"?
-                // Nota: Asegúrate de que los IDs en Mostwanted coincidan con los de products.json
-                // si quieres que la persistencia funcione entre páginas.
                 const isLiked = isFavorite(item.id);
 
                 return (
@@ -127,53 +132,73 @@ const Home = () => {
                         key={item.id}
                         className="group relative bg-white/30 backdrop-blur-lg rounded-3xl p-6 border border-white/40 shadow-lg hover:shadow-2xl hover:border-white/60 transition-all duration-300 overflow-hidden"
                     >
-                        {/* Título */}
-                        <h3 className="text-espresso font-clash font-semibold text-xl mb-4 min-h-14">
-                            {item.name}
-                        </h3>
+                        {/* Header Card: Título y Género */}
+                        <div className="mb-4">
+                            <h3 className="text-espresso font-clash font-semibold text-xl mb-4 min-h-14 leading-tight">
+                                {item.name}
+                            </h3>
+                            <p className="text-sm font-sans font-semibold text-espresso/50 mb-6 uppercase tracking-wider">
+                                {item.brand}
+                            </p>
+                        </div>
 
                         {/* Imagen del producto */}
-                        <div className="relative h-48 mb-6 flex items-center justify-center">
+                        <div className="relative h-48 mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                             <img
-                                src={item.image}
+                                src={item.images[0]}
                                 alt={item.name}
-                                className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-5deg]"
+                                className="w-full h-full object-contain transition-transform duration-500 group-hover:rotate-[-5deg] drop-shadow-xl"
+                                onError={(e) => {e.target.src = "https://via.placeholder.com/300?text=No+Image"}} 
                             />
                         </div>
 
                         {/* Precio */}
-                        <p className="text-2xl font-clash font-bold text-espresso mb-6">
-                            {item.price}
-                        </p>
+                        <div className="mb-6">
+                            <p className="text-2xl font-clash font-bold text-espresso">
+                                {formatPrice(item.price)}
+                            </p>
+                        </div>
 
-                        {/* Botones */}
-                        <div className="flex items-center gap-3">
-                            {/* Botón: Añadir al carrito */}
-                            <button
-                                type="button"
-                                className="flex-1 bg-fuzzy text-espresso text-base font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
-                            >
-                                Añadir
-                            </button>
+                        {/* Botones de accion */}
+                        <div className="flex flex-col gap-3">
+                            <div className="flex gap-2">
+                                
+                                {/* Botón: Añadir */}
+                                <button
+                                    type="button"
+                                    onClick={() => addToCart(item)}
+                                    className="flex-1 bg-fuzzy text-white text-base font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-copperfield hover:scale-105 active:scale-95 transition-all duration-300"
+                                >
+                                    Añadir
+                                </button>
 
-                            {/* Botón: Favoritos Actualizado */}
-                            <button
-                                type="button"
-                                onClick={() => toggleFavorite(item.id)}
-                                className={`
-                                    p-3 rounded-full backdrop-blur-sm border transition-all duration-300
-                                    ${isLiked 
-                                        ? "bg-red-100 border-red-200 hover:bg-red-200" 
-                                        : "bg-white/40 border-white/60 hover:bg-white hover:text-fuzzy"
-                                    }
-                                `}
-                                aria-label="Agregar a favoritos"
+                                {/* Botón: Favoritos */}
+                                <button
+                                    type="button"
+                                    onClick={() => toggleFavorite(item.id)}
+                                    className={`
+                                        p-3 rounded-full backdrop-blur-sm border transition-all duration-300
+                                        ${isLiked 
+                                            ? "bg-red-100 border-red-200 hover:bg-red-200" 
+                                            : "bg-white/40 border-white/60 hover:bg-white hover:text-fuzzy"
+                                        }
+                                    `}
+                                    aria-label="Agregar a favoritos"
+                                >
+                                    <Heart 
+                                        size={24} 
+                                        className={`transition-colors ${isLiked ? "fill-red-500 text-red-500" : "text-espresso"}`} 
+                                    />
+                                </button>
+                            </div>
+
+                            {/* Botón: Ver Detalles */}
+                            <Link
+                                to={`/producto/${item.id}`}
+                                className="block w-full text-center text-espresso text-sm font-semibold px-4 py-2.5 rounded-xl border border-espresso/20 hover:border-espresso hover:bg-espresso hover:text-white transition-all duration-300"
                             >
-                                <Heart 
-                                    size={24} 
-                                    className={`transition-colors ${isLiked ? "fill-red-500 text-red-500" : "text-espresso"}`} 
-                                />
-                            </button>
+                                Ver Detalles
+                            </Link>
                         </div>
                     </div>
                 );

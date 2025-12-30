@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-
 //data
 import { allCollection } from "../data/collection";
 

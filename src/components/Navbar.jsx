@@ -1,14 +1,21 @@
-import { Heart, ShoppingCart, Search, User, X, Menu } from 'lucide-react';
+import { Heart, ShoppingCart, Search, User, X, Menu, Trash2, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+//hooks
+import { useCart } from '../context/CartContext';
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState('inicio');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  
   const navigate = useNavigate();
+
+  // Usamos el contexto del carrito
+  const { cart, removeFromCart, updateQuantity, cartCount, cartTotal } = useCart();
 
   const tabs = [
     { id: 'inicio', label: 'Inicio', path: '/' },
@@ -18,20 +25,21 @@ export default function Navbar() {
     { id: 'coleccion', label: 'Colección', path: '/coleccion' }
   ];
 
-  // Función para manejar la navegación
   const handleNavigation = (path, id) => {
     setActiveTab(id);
-    navigate(path); // para manejar las rutas
-    setIsMobileMenuOpen(false); // Cerramos menú móvil si está abierto
+    navigate(path);
+    setIsMobileMenuOpen(false);
   };
+
+  // Formateador de moneda
+  const formatPrice = (price) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(price);
 
   return (
     <nav className="w-full sticky top-0 z-50 bg-almond transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 py-4">
-        {/* CONTENEDOR PRINCIPAL: Columna en móvil, Fila en escritorio */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
           
-          {/*  LOGO (Arriba en móvil, Izquierda en Desktop) */}
+          {/* LOGO */}
           <div className="w-full md:w-auto text-center md:text-left">
             <h1 
               onClick={() => handleNavigation('/', 'inicio')}
@@ -41,19 +49,15 @@ export default function Navbar() {
             </h1>
           </div>
 
-          {/* TABS NAVIGATION (Oculto en móvil, Visible en Desktop) */}
+          {/* TABS */}
           <div className="hidden md:flex items-center gap-2 bg-white/30 backdrop-blur-lg px-6 py-3 rounded-3xl shadow-lg border border-white/40">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => handleNavigation(tab.path, tab.id)}
                 className={`
-                  px-6 py-2 text-md font-medium rounded-2xl 
-                  transition-all duration-500
-                  ${activeTab === tab.id
-                    ? "bg-white/45 text-espresso shadow-md"
-                    : "text-espresso/70 hover:text-espresso"
-                  }
+                  px-6 py-2 text-md font-medium rounded-2xl transition-all duration-500
+                  ${activeTab === tab.id ? "bg-white/45 text-espresso shadow-md" : "text-espresso/70 hover:text-espresso"}
                 `}
               >
                 {tab.label}
@@ -61,73 +65,48 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/*  ICONOS FUNCIONALES (Abajo del logo en móvil, Derecha en Desktop) */}
+          {/* ICONOS */}
           <div className="w-full md:w-auto flex items-center justify-center md:justify-end gap-6 md:gap-6">
-            
-            {/* Botón Menú Hamburguesa (SOLO MÓVIL) */}
-            <button 
-              className="md:hidden text-espresso hover:text-fuzzy"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
+            <button className="md:hidden text-espresso hover:text-fuzzy" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
 
-            {/* Favoritos */}
-            <button
-              onClick={() => navigate('/favoritos')}
-              className="text-fuzzy hover:text-copperfield transition-colors duration-200"
-              aria-label="favoritos"
-            >
+            <button onClick={() => navigate('/favoritos')} className="text-fuzzy hover:text-copperfield transition-colors duration-200">
               <Heart className="w-6 h-6" strokeWidth={2} />
             </button>
 
-            {/* Carrito */}
+            {/* CARRITO BUTTON */}
             <button
-              onClick={() => setIsCartOpen(!isCartOpen)}
+              onClick={() => setIsCartOpen(true)}
               className="text-fuzzy hover:text-copperfield transition-colors duration-200 relative"
-              aria-label="carrito"
             >
               <ShoppingCart className="w-6 h-6" strokeWidth={2} />
-              <span className="absolute -top-2 -right-2 bg-fuzzy text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">
-                3
-              </span>
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-fuzzy text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold animate-bounce">
+                  {cartCount}
+                </span>
+              )}
             </button>
 
-            {/* Búsqueda */}
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="text-fuzzy hover:text-copperfield transition-colors duration-200"
-              aria-label="buscar"
-            >
+            <button onClick={() => setIsSearchOpen(!isSearchOpen)} className="text-fuzzy hover:text-copperfield transition-colors duration-200">
               <Search className="w-6 h-6" strokeWidth={2} />
             </button>
 
-            {/* Perfil */}
-            <button
-              onClick={() => navigate('/perfil')}
-              className="text-fuzzy hover:text-copperfield transition-colors duration-200"
-              aria-label="perfil"
-            >
+            <button onClick={() => navigate('/perfil')} className="text-fuzzy hover:text-copperfield transition-colors duration-200">
               <User className="w-6 h-6" strokeWidth={2} />
             </button>
           </div>
         </div>
 
-        {/*  MENÚ DESPLEGABLE MÓVIL (Solo visible si está abierto y es móvil) */}
+        {/* MOBILE MENU */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 bg-white/30 backdrop-blur-lg rounded-2xl border border-white/40 p-4 animate-fade-in-down">
+          <div className="md:hidden mt-4 bg-white/30 backdrop-blur-lg rounded-2xl border border-white/40 p-4">
             <div className="flex flex-col gap-2">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => handleNavigation(tab.path, tab.id)}
-                  className={`
-                    w-full text-left px-4 py-3 rounded-xl font-medium transition-colors
-                    ${activeTab === tab.id
-                      ? "bg-fuzzy text-white"
-                      : "text-espresso hover:bg-white/50"
-                    }
-                  `}
+                  className={`w-full text-left px-4 py-3 rounded-xl font-medium ${activeTab === tab.id ? "bg-fuzzy text-white" : "text-espresso hover:bg-white/50"}`}
                 >
                   {tab.label}
                 </button>
@@ -137,61 +116,119 @@ export default function Navbar() {
         )}
       </div>
 
-      {/*  MODALES EXISTENTES (Carrito y Búsqueda) */}
-      
       {/* MODAL CARRITO */}
       {isCartOpen && (
-        <div className="fixed inset-0 z-50"> {/* Subí z-index */}
+        <div className="fixed inset-0 z-60">
+          {/* Overlay oscuro */}
           <div 
-            className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
             onClick={() => setIsCartOpen(false)}
           />
-          <div className="absolute right-0 top-0 h-screen md:top-20 md:h-auto md:w-96 w-full bg-white md:rounded-2xl shadow-2xl p-6 overflow-y-auto">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-espresso">Tu Carrito</h2>
-              <button onClick={() => setIsCartOpen(false)}>
-                <X className="w-5 h-5 text-espresso" />
+          
+          {/* Contenedor Modal */}
+          <div className="absolute right-0 top-0 h-full w-full md:w-125 bg-white/80 backdrop-blur-xl md:m-4 md:h-[calc(100%-32px)] md:rounded-[2.5rem] shadow-2xl flex flex-col border border-white/50">
+            
+            {/* Header Modal */}
+            <div className="flex items-center justify-between p-8 border-b border-espresso/5">
+              <h2 className="text-3xl font-clash font-bold text-espresso">
+                Tu bolsa <span className="text-fuzzy">({cartCount})</span>
+              </h2>
+              <button 
+                onClick={() => setIsCartOpen(false)}
+                className="p-2 hover:bg-black/5 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6 text-espresso" />
               </button>
             </div>
-            {/* ... Contenido del carrito ... */}
-             <div className="space-y-4 mb-6">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="flex gap-3 pb-4 border-b border-almond">
-                  <div className="w-16 h-16 bg-almond rounded-lg" />
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-espresso">Nike Air Max</p>
-                    <p className="text-xs text-espresso/60">$150.00</p>
-                    <p className="text-xs text-espresso/60 mt-1">Cantidad: 1</p>
+
+            {/* Lista de Productos (Scrollable) */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              {cart.length > 0 ? (
+                cart.map((item) => (
+                  <div key={item.id} className="group relative bg-white/50 rounded-3xl p-4 flex gap-4 border border-white/60 shadow-sm">
+                    {/* Imagen */}
+                    <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center p-2">
+                        <img src={item.images[0]} alt={item.name} className="w-full h-full object-contain" />
+                    </div>
+
+                    {/* Info */}
+                    <div className="flex-1 flex flex-col justify-between py-1">
+                        <div>
+                            <h3 className="font-clash font-semibold text-espresso leading-tight">{item.name}</h3>
+                            <p className="text-xs text-espresso/60 mt-1 uppercase">Talla: 28 MX</p> {/* Placeholder de talla */}
+                            <p className="text-sm font-bold text-espresso mt-1">{formatPrice(item.price)}</p>
+                        </div>
+
+                        {/* Controles */}
+                        <div className="flex items-center justify-between mt-2">
+                            <div className="flex items-center gap-3 bg-white/80 rounded-xl px-2 py-1 border border-espresso/10">
+                                <button 
+                                    onClick={() => updateQuantity(item.id, 'decrease')}
+                                    className="p-1 hover:text-fuzzy disabled:opacity-30"
+                                    disabled={item.quantity <= 1}
+                                >
+                                    <Minus size={14} />
+                                </button>
+                                <span className="text-sm font-semibold w-4 text-center">{item.quantity}</span>
+                                <button 
+                                    onClick={() => updateQuantity(item.id, 'increase')}
+                                    className="p-1 hover:text-fuzzy"
+                                >
+                                    <Plus size={14} />
+                                </button>
+                            </div>
+
+                            <button 
+                                onClick={() => removeFromCart(item.id)}
+                                className="flex items-center gap-1 text-xs text-red-500 hover:text-red-700 font-medium px-2 py-1 rounded-lg hover:bg-red-50 transition-colors"
+                            >
+                                <Trash2 size={14} />
+                                Eliminar
+                            </button>
+                        </div>
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="h-full flex flex-col items-center justify-center text-center opacity-50">
+                    <ShoppingCart size={48} className="mb-4 text-espresso" />
+                    <p className="font-clash text-xl">Tu bolsa está vacía</p>
+                    <p className="text-sm">¡Agrega algo con estilo!</p>
                 </div>
-              ))}
+              )}
             </div>
-             <button className="w-full bg-fuzzy text-white py-3 rounded-xl font-medium hover:bg-copperfield transition-colors">
-              Ir al Checkout
-            </button>
+
+            {/* Footer Total  */}
+            {cart.length > 0 && (
+                <div className="p-8 bg-white/60 backdrop-blur-md border-t border-white shadow-[0_-10px_40px_rgba(0,0,0,0.05)] rounded-b-[2.5rem]">
+                <div className="flex items-center justify-between mb-6">
+                    <span className="text-espresso/70 font-medium">Subtotal</span>
+                    <span className="text-2xl font-clash font-bold text-espresso">{formatPrice(cartTotal)}</span>
+                </div>
+                <button className="w-full bg-fuzzy text-white text-lg font-bold py-4 rounded-2xl shadow-xl shadow-fuzzy/30 hover:bg-copperfield hover:shadow-fuzzy/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                    Ir a pagar
+                </button>
+                <p className="text-center text-xs text-espresso/40 mt-4">
+                    Envío e impuestos calculados en el checkout
+                </p>
+                </div>
+            )}
           </div>
         </div>
       )}
 
-      {/* MENÚ BÚSQUEDA LATERAL */}
+      {/* MODAL BÚSQUEDA */}
       {isSearchOpen && (
         <div className="fixed inset-0 z-50">
-          <div 
-            className="absolute inset-0 bg-black/20 backdrop-blur-sm"
-            onClick={() => setIsSearchOpen(false)}
-          />
+          <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setIsSearchOpen(false)}/>
           <div className="absolute right-0 top-0 h-screen md:top-20 md:h-auto md:w-80 w-full bg-white md:rounded-2xl shadow-2xl p-6">
-            <div className="flex items-center justify-between mb-6">
+             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-espresso">Buscar</h2>
-              <button onClick={() => setIsSearchOpen(false)}>
-                <X className="w-5 h-5 text-espresso" />
-              </button>
+              <button onClick={() => setIsSearchOpen(false)}><X className="w-5 h-5 text-espresso" /></button>
             </div>
             <div className="relative mb-6">
-              <input
-                type="text"
-                placeholder="Busca un producto..."
-                value={searchQuery}
+              <input 
+                type="text" placeholder="Busca un producto..." value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-almond px-4 py-3 rounded-xl text-sm text-espresso placeholder-espresso/50 focus:outline-none focus:ring-2 focus:ring-fuzzy"
                 autoFocus
