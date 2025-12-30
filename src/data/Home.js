@@ -21,7 +21,7 @@ export const userReviews = [
     comment: "Excelente servicio, cumple con las especificaciones",
     user: {
       name: "Eduardo M",
-      avatar: "https://i.pravatar.cc/150?img=1", // Avatar aleatorio
+      avatar: "https://i.pravatar.cc/150?img=1",
       verified: true
     }
   },

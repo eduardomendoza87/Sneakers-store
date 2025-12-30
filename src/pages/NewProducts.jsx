@@ -10,12 +10,18 @@ import SizeFilter from "../components/ui/SizeFilter";
 // Data
 import products from '../data/products.json'; 
 
+// CONTEXTO
+import { useFavorites } from '../context/FavoritesContext';
+
 const NewProducts = () => {
+
+    //  ACTIVAR LA LÓGICA DE FAVORITOS
+    const { toggleFavorite, isFavorite } = useFavorites();
 
     // FILTRADO: Solo mostramos los que tienen isNew: true
     const newArrivals = products.filter(item => item.isNew === true);
 
-    //HELPER: Función para formatear el precio (de número 3899 a "$3,899.00 MXN")
+    //HELPER: Función para formatear el precio
     const formatPrice = (price) => {
         return new Intl.NumberFormat("es-MX", {
             style: "currency",
@@ -57,58 +63,74 @@ const NewProducts = () => {
                 <div className="max-w-7xl mx-auto mb-12">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         
-                        {/* Mapeamos la lista filtrada  */}
-                        {newArrivals.map((item) => (
-                            <div
-                                key={item.id}
-                                className="group relative bg-white/30 backdrop-blur-lg rounded-3xl p-6 border border-white/40 shadow-lg hover:shadow-2xl hover:border-white/60 transition-all duration-300 overflow-hidden"
-                            >
-                                {/* Título */}
-                                <h3 className="text-espresso font-clash font-semibold text-xl mb-4 min-h-14 leading-tight">
-                                    {item.name}
-                                </h3>
-                                
-                                {/* Género  */}
-                                <p className="text-sm font-sans font-semibold text-espresso/50 mb-6 uppercase tracking-wider">
-                                    {item.gender[0]}
-                                </p>
+                        {/* Mapeamos la lista filtrada con return explícito */}
+                        {newArrivals.map((item) => {
+                            
+                            //  VARIABLE AUXILIAR
+                            const isLiked = isFavorite(item.id);
 
-                                {/* Imagen del producto */}
-                                <div className="relative h-48 mb-6 flex items-center justify-center">
-                                    <img
-                                        src={item.images[0]}
-                                        alt={item.name}
-                                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-5deg] drop-shadow-xl"
-                                        onError={(e) => {e.target.src = "https://via.placeholder.com/300?text=No+Image"}} 
-                                    />
+                            return (
+                                <div
+                                    key={item.id}
+                                    className="group relative bg-white/30 backdrop-blur-lg rounded-3xl p-6 border border-white/40 shadow-lg hover:shadow-2xl hover:border-white/60 transition-all duration-300 overflow-hidden"
+                                >
+                                    {/* Título */}
+                                    <h3 className="text-espresso font-clash font-semibold text-xl mb-4 min-h-14 leading-tight">
+                                        {item.name}
+                                    </h3>
+                                    
+                                    {/* Género  */}
+                                    <p className="text-sm font-sans font-semibold text-espresso/50 mb-6 uppercase tracking-wider">
+                                        {item.gender[0]}
+                                    </p>
+
+                                    {/* Imagen del producto */}
+                                    <div className="relative h-48 mb-6 flex items-center justify-center">
+                                        <img
+                                            src={item.images[0]}
+                                            alt={item.name}
+                                            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-5deg] drop-shadow-xl"
+                                            onError={(e) => {e.target.src = "https://via.placeholder.com/300?text=No+Image"}} 
+                                        />
+                                    </div>
+
+                                    {/* Precio */}
+                                    <p className="text-2xl font-clash font-bold text-espresso mb-6">
+                                        {formatPrice(item.price)}
+                                    </p>
+
+                                    {/* Botones */}
+                                    <div className="flex items-center gap-3">
+                                        {/* Botón: Añadir */}
+                                        <button
+                                            type="button"
+                                            className="flex-1 bg-fuzzy text-white text-base font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-copperfield hover:scale-105 active:scale-95 transition-all duration-300"
+                                        >
+                                            Añadir
+                                        </button>
+
+                                        {/* Botón: Favoritos Actualizado */}
+                                        <button
+                                            type="button"
+                                            onClick={() => toggleFavorite(item.id)}
+                                            className={`
+                                                p-3 rounded-full backdrop-blur-sm border transition-all duration-300
+                                                ${isLiked 
+                                                    ? "bg-red-100 border-red-200 hover:bg-red-200" // Estilo FAV
+                                                    : "bg-white/40 border-white/60 hover:bg-white hover:text-fuzzy" // Estilo NORMAL
+                                                }
+                                            `}
+                                            aria-label="Agregar a favoritos"
+                                        >
+                                            <Heart 
+                                                size={24} 
+                                                className={`transition-colors ${isLiked ? "fill-red-500 text-red-500" : "text-espresso"}`} 
+                                            />
+                                        </button>
+                                    </div>
                                 </div>
-
-                                {/* Precio (Usamos el formateador) */}
-                                <p className="text-2xl font-clash font-bold text-espresso mb-6">
-                                    {formatPrice(item.price)}
-                                </p>
-
-                                {/* Botones */}
-                                <div className="flex items-center gap-3">
-                                    {/* Botón: Añadir */}
-                                    <button
-                                        type="button"
-                                        className="flex-1 bg-fuzzy text-white text-base font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-copperfield hover:scale-105 active:scale-95 transition-all duration-300"
-                                    >
-                                        Añadir
-                                    </button>
-
-                                    {/* Botón: Favoritos */}
-                                    <button
-                                        type="button"
-                                        className="p-3 rounded-full bg-white/40 backdrop-blur-sm border border-white/60 hover:bg-white hover:text-fuzzy hover:scale-110 active:scale-95 transition-all duration-300 group/heart"
-                                        aria-label="Agregar a favoritos"
-                                    >
-                                        <Heart size={24} className="text-espresso group-hover/heart:text-fuzzy transition-colors" />
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
