@@ -9,6 +9,7 @@ import WomenCollection from '../pages/WomenCollection';
 import Collection from '../pages/Collection';
 import CollectionDetails from '../pages/CollectionDetails';
 import FavoritesSneakers from '../pages/favorites';
+import SneakersDetails from '../pages/SneakersDetails';
 
 const AppRoutes = () =>{
     return(
@@ -23,6 +24,7 @@ const AppRoutes = () =>{
             <Route path='/coleccion' element={<Collection/>}/>
             <Route path="/coleccion/:collectionId" element={<CollectionDetails/>}/>
             <Route path='/favoritos' element={<FavoritesSneakers/>}/>
+            <Route path='/producto/:productId' element={<SneakersDetails/>}/>
             {/*Ruta: Inicio*/}
 
             </Route>

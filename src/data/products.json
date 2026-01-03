@@ -17,6 +17,26 @@
       "/images/products/new-balance/9060/sea-salt/9060-sea-salt-1.png",
       "/images/products/new-balance/9060/sea-salt/9060-sea-salt-2.png",
       "/images/products/new-balance/9060/sea-salt/9060-sea-salt-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Sofía R.",
+        "rating": 5,
+        "comment": "Simplemente hermosos. El color Sea Salt combina con todo y son los tenis más cómodos que he tenido.",
+        "date": "2023-11-12"
+      },
+      {
+        "user": "Carlos M.",
+        "rating": 5,
+        "comment": "La calidad de la gamuza es increíble. Se sienten un poco grandes, recomiendo media talla menos.",
+        "date": "2023-12-05"
+      },
+      {
+        "user": "Ana P.",
+        "rating": 4,
+        "comment": "El diseño es muy futurista, me encantan. El envío fue súper rápido.",
+        "date": "2024-01-10"
+      }
     ]
   },
   {
@@ -37,9 +57,20 @@
       "/images/products/new-balance/9060/black-castlerock/9060-black-castlerock-1.png",
       "/images/products/new-balance/9060/black-castlerock/9060-black-castlerock-2.png",
       "/images/products/new-balance/9060/black-castlerock/9060-black-castlerock-3.png"
-
-
-
+    ],
+    "reviews": [
+      {
+        "user": "Diego L.",
+        "rating": 5,
+        "comment": "Perfectos para el uso diario, no se ensucian fácilmente y se ven muy rudos.",
+        "date": "2023-10-20"
+      },
+      {
+        "user": "Miguel A.",
+        "rating": 5,
+        "comment": "Una silueta muy agresiva pero elegante. New Balance nunca falla.",
+        "date": "2023-11-02"
+      }
     ]
   },
   {
@@ -60,8 +91,20 @@
       "/images/products/new-balance/9060/truffle/9060-truffle-1.png",
       "/images/products/new-balance/9060/truffle/9060-truffle-2.png",
       "/images/products/new-balance/9060/truffle/9060-truffle-3.png"
-
-      
+    ],
+    "reviews": [
+      {
+        "user": "Valentina G.",
+        "rating": 5,
+        "comment": "El color en persona es mucho más bonito que en las fotos. Es un tono tierra único.",
+        "date": "2024-01-15"
+      },
+      {
+        "user": "Lucía H.",
+        "rating": 4,
+        "comment": "Muy cómodos para caminar todo el día.",
+        "date": "2024-02-01"
+      }
     ]
   },
   {
@@ -78,12 +121,24 @@
     "isFeatured": false,
     "description": "El gris clásico de New Balance, elevado. Una ejecución impecable en gamuza suave que rinde homenaje a la herencia de la marca mientras mira hacia el futuro.",
     "images": [
-            "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-main.png",
-            "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-1.png",
-            "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-2.png",
-            "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-3.png"
-
-
+      "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-main.png",
+      "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-1.png",
+      "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-2.png",
+      "/images/products/new-balance/9060/rain-cloud/9060-rain-cloud-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Javier T.",
+        "rating": 5,
+        "comment": "El gris clásico de NB es insuperable. Calidad premium.",
+        "date": "2023-09-10"
+      },
+      {
+        "user": "Roberto S.",
+        "rating": 5,
+        "comment": "Excelente amortiguación y estilo.",
+        "date": "2023-09-25"
+      }
     ]
   },
   {
@@ -104,6 +159,26 @@
       "/images/products/nike/jordan-1/dark-mocha/jordan-1-dark-mocha-1.png",
       "/images/products/nike/jordan-1/dark-mocha/jordan-1-dark-mocha-2.png",
       "/images/products/nike/jordan-1/dark-mocha/jordan-1-dark-mocha-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Andrés C.",
+        "rating": 5,
+        "comment": "El Santo Grial. La calidad del cuero es superior a otros Jordan 1.",
+        "date": "2023-08-15"
+      },
+      {
+        "user": "Esteban Q.",
+        "rating": 5,
+        "comment": "Valen cada centavo. Combinan con todo mi guardarropa.",
+        "date": "2023-11-20"
+      },
+      {
+        "user": "Felipe R.",
+        "rating": 4,
+        "comment": "Llegaron en doble caja, todo perfecto.",
+        "date": "2023-12-12"
+      }
     ]
   },
   {
@@ -120,13 +195,24 @@
     "isFeatured": false,
     "description": "Minimalismo en tonos arena. Esta edición Mid presenta acabados en cuero mate color almendra y una suela de goma natural, perfecta para combinar con paletas neutras.",
     "images": [
-     "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-main.png",
-     "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-1.png",
-     "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-2.png",
-     "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-3.png"
-
-
-
+      "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-main.png",
+      "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-1.png",
+      "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-2.png",
+      "/images/products/nike/jordan-1/tan-gum/jordan-1-mid-tan-gum-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Mariana L.",
+        "rating": 5,
+        "comment": "Me encanta el tono neutro, se ven muy elegantes.",
+        "date": "2024-01-05"
+      },
+      {
+        "user": "Paola S.",
+        "rating": 4,
+        "comment": "Son bonitos pero se ensucian un poco rápido si no tienes cuidado.",
+        "date": "2024-01-20"
+      }
     ]
   },
   {
@@ -147,6 +233,20 @@
       "/images/products/nike/jordan-1/chicago/jordan-1-chicago-1.png",
       "/images/products/nike/jordan-1/chicago/jordan-1-chicago-2.png",
       "/images/products/nike/jordan-1/chicago/jordan-1-chicago-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Ricardo V.",
+        "rating": 5,
+        "comment": "Historia pura en los pies. Los detalles vintage están increíbles.",
+        "date": "2023-11-28"
+      },
+      {
+        "user": "Gustavo F.",
+        "rating": 5,
+        "comment": "El mejor lanzamiento del año pasado sin duda.",
+        "date": "2023-12-15"
+      }
     ]
   },
   {
@@ -167,6 +267,20 @@
       "/images/products/nike/jordan-1/wolf-grey/jordan-1-low-wolf-grey-1.png",
       "/images/products/nike/jordan-1/wolf-grey/jordan-1-low-wolf-grey-2.png",
       "/images/products/nike/jordan-1/wolf-grey/jordan-1-low-wolf-grey-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Elena K.",
+        "rating": 5,
+        "comment": "Se ven súper limpios y combinan con jeans y vestidos.",
+        "date": "2024-01-18"
+      },
+      {
+        "user": "Daniela M.",
+        "rating": 4,
+        "comment": "La suela translúcida es un toque genial.",
+        "date": "2024-02-05"
+      }
     ]
   },
   {
@@ -183,10 +297,24 @@
     "isFeatured": true,
     "description": "Volumen y textura. Inspiradas en el skate de los 2000, estas Campus en color corteza presentan una silueta robusta, lengüeta acolchada y gamuza de pelo largo.",
     "images": [
-     "/images/products/adidas/campus/bark/adidas-campus-bark-main.png",
-     "/images/products/adidas/campus/bark/adidas-campus-bark-1.png",
-    "/images/products/adidas/campus/bark/adidas-campus-bark-2.png",
-    "/images/products/adidas/campus/bark/adidas-campus-bark-3.png"
+      "/images/products/adidas/campus/bark/adidas-campus-bark-main.png",
+      "/images/products/adidas/campus/bark/adidas-campus-bark-1.png",
+      "/images/products/adidas/campus/bark/adidas-campus-bark-2.png",
+      "/images/products/adidas/campus/bark/adidas-campus-bark-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Tomás B.",
+        "rating": 5,
+        "comment": "Súper cómodas y acolchadas. El estilo chunky está de vuelta.",
+        "date": "2023-12-01"
+      },
+      {
+        "user": "Alejandro G.",
+        "rating": 5,
+        "comment": "Las agujetas gruesas le dan toda la onda.",
+        "date": "2024-01-12"
+      }
     ]
   },
   {
@@ -204,6 +332,14 @@
     "description": "El nuevo estándar urbano. Gris neutro sobre una mediasuela 'off-white' para un look vintage instantáneo que combina con absolutamente todo.",
     "images": [
       "/images/campus-grey-1.png"
+    ],
+    "reviews": [
+      {
+        "user": "Carmen O.",
+        "rating": 5,
+        "comment": "Un básico necesario. Son muy duraderos.",
+        "date": "2023-10-05"
+      }
     ]
   },
   {
@@ -224,9 +360,20 @@
       "/images/products/adidas/campus/ambient-sky/adidas-campus-ambient-sky-1.png",
       "/images/products/adidas/campus/ambient-sky/adidas-campus-ambient-sky-2.png",
       "/images/products/adidas/campus/ambient-sky/adidas-campus-ambient-sky-3.png"
-
-
-
+    ],
+    "reviews": [
+      {
+        "user": "Isabella V.",
+        "rating": 5,
+        "comment": "El color es precioso, tal cual la foto.",
+        "date": "2024-01-25"
+      },
+      {
+        "user": "Fernanda R.",
+        "rating": 4,
+        "comment": "Son lindas pero la gamuza clara requiere cuidado.",
+        "date": "2024-02-10"
+      }
     ]
   },
   {
@@ -247,6 +394,20 @@
       "/images/products/adidas/campus/core-black/adidas-campus-core-black-1.png",
       "/images/products/adidas/campus/core-black/adidas-campus-core-black-2.png",
       "/images/products/adidas/campus/core-black/adidas-campus-core-black-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Pablo N.",
+        "rating": 5,
+        "comment": "Son tanques de guerra, aguantan todo.",
+        "date": "2023-09-15"
+      },
+      {
+        "user": "Luis D.",
+        "rating": 5,
+        "comment": "Clásicas. No hay más que decir.",
+        "date": "2023-11-08"
+      }
     ]
   },
   {
@@ -267,6 +428,14 @@
       "/images/products/puma/suede/dark-myrtle/puma-dark-myrtle-1.png",
       "/images/products/puma/suede/dark-myrtle/puma-dark-myrtle-2.png",
       "/images/products/puma/suede/dark-myrtle/puma-dark-myrtle-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Oscar P.",
+        "rating": 5,
+        "comment": "El color verde oliva es muy sofisticado.",
+        "date": "2023-12-22"
+      }
     ]
   },
   {
@@ -284,6 +453,14 @@
     "description": "Profundidad en azul. Gamuza rica y saturada combinada con la franja blanca característica. Un básico esencial para cualquier rotación minimalista.",
     "images": [
       "/images/puma-navy-1.png"
+    ],
+    "reviews": [
+      {
+        "user": "Hector J.",
+        "rating": 4,
+        "comment": "Muy buenas zapatillas por el precio.",
+        "date": "2023-10-30"
+      }
     ]
   },
   {
@@ -301,6 +478,14 @@
     "description": "Audacia pura. Un rojo vibrante que captura miradas, ideal para quienes buscan hacer una declaración de estilo sin complicaciones.",
     "images": [
       "/images/puma-red-1.png"
+    ],
+    "reviews": [
+      {
+        "user": "Gabriela T.",
+        "rating": 5,
+        "comment": "¡El rojo es súper intenso! Me encantan.",
+        "date": "2023-11-14"
+      }
     ]
   },
   {
@@ -321,6 +506,20 @@
       "/images/products/puma/suede/black-white/puma-suede-black-white-1.png",
       "/images/products/puma/suede/black-white/puma-suede-black-white-2.png",
       "/images/products/puma/suede/black-white/puma-suede-black-white-3.png"
+    ],
+    "reviews": [
+      {
+        "user": "Ramón F.",
+        "rating": 5,
+        "comment": "Old school total. Nunca fallan.",
+        "date": "2023-09-02"
+      },
+      {
+        "user": "Diana C.",
+        "rating": 5,
+        "comment": "Comodidad clásica y combinan con todo.",
+        "date": "2023-12-05"
+      }
     ]
   }
 ]

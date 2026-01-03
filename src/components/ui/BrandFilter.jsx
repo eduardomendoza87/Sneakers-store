@@ -2,10 +2,10 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const brands = [
-  { id: "nike", label: "Nike", count: 12 },
-  { id: "adidas", label: "Adidas", count: 8 },
-  { id: "new-balance", label: "New Balance", count: 5 },
-  { id: "puma", label: "Puma", count: 3 },
+  { id: "nike", label: "Nike" },
+  { id: "adidas", label: "Adidas" },
+  { id: "new-balance", label: "New Balance" },
+  { id: "puma", label: "Puma" },
 ];
 
 export default function BrandFilter({ onChange }) {
@@ -93,11 +93,6 @@ export default function BrandFilter({ onChange }) {
                     {brand.label}
                   </span>
                 </div>
-
-                {/* Contador */}
-                <span className="text-xs text-espresso/40">
-                  ({brand.count})
-                </span>
               </li>
             );
           })}

@@ -21,19 +21,25 @@ export const CartProvider = ({ children }) => {
   //  Función: Agregar al carrito
   const addToCart = (product) => {
     setCart((prevCart) => {
-      // ¿Ya existe el producto?
-      const existingItem = prevCart.find((item) => item.id === product.id);
+      // Usamos 'cartId' si existe (viene del detalle), si no, usamos 'id' normal (viene de novedades/home)
+      const identifier = product.cartId || product.id; 
+
+      // Buscamos si ya existe ese item ESPECÍFICO (Zapato + Talla)
+      const existingItem = prevCart.find((item) => (item.cartId || item.id) === identifier);
 
       if (existingItem) {
-        // Si existe, aumentamos la cantidad +1
         return prevCart.map((item) =>
-          item.id === product.id
+          (item.cartId || item.id) === identifier
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       } else {
-        // Si no existe, lo agregamos con cantidad 1
-        return [...prevCart, { ...product, quantity: 1 }];
+        // Si no existe la talla específica, usamos una por defecto si viene de Home
+        const newProduct = {
+            ...product,
+            selectedSize: product.selectedSize || product.sizes[0] // Fallback a la primera talla si no se eligió
+        };
+        return [...prevCart, { ...newProduct, quantity: 1 }];
       }
     });
   };
