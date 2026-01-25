@@ -1,9 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// 1. Creamos el contexto (la mochila vacía)
+// Creamos el contexto (la mochila vacía)
 const FavoritesContext = createContext();
 
-// 2. Creamos el Proveedor (quien reparte los datos a la app)
+// Creamos el Proveedor (quien reparte los datos a la app)
 export const FavoritesProvider = ({ children }) => {
   // Inicializamos el estado leyendo el LocalStorage (para no perder datos al recargar)
   const [favorites, setFavorites] = useState(() => {
@@ -43,5 +43,5 @@ export const FavoritesProvider = ({ children }) => {
   );
 };
 
-// 3. Hook personalizado para usarlo fácil en cualquier lado
+// Hook personalizado para usarlo fácil en cualquier lado
 export const useFavorites = () => useContext(FavoritesContext);

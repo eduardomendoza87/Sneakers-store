@@ -1,16 +1,22 @@
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
-//Context
+
+// Context
 import { FavoritesProvider } from "./context/FavoritesContext";
 import { CartProvider } from './context/CartContext';
+
+// Importa tu componente ScrollToTop
+import ScrollToTop from './components/ScrollToTop'; 
+
 function App() {
   return (
     <BrowserRouter>
-    <FavoritesProvider>
-      <CartProvider>
-      <AppRoutes />
-      </CartProvider>
-    </FavoritesProvider>
+      <ScrollToTop />       
+      <FavoritesProvider>
+        <CartProvider>
+          <AppRoutes />
+        </CartProvider>
+      </FavoritesProvider>
     </BrowserRouter>
   );
 }

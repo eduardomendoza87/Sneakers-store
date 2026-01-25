@@ -1,84 +1,85 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (!context) throw new Error("useCart must be used within a CartProvider");
+  return context;
+};
+
 export const CartProvider = ({ children }) => {
-  //  Estado inicial desde LocalStorage
+  // Inicializar desde LocalStorage
   const [cart, setCart] = useState(() => {
-    try {
-      const storedCart = localStorage.getItem('myCart');
-      return storedCart ? JSON.parse(storedCart) : [];
-    } catch (error) {
-      return [];
-    }
+    const storedCart = localStorage.getItem("sneakersCart");
+    return storedCart ? JSON.parse(storedCart) : [];
   });
 
-  //  Guardar en LocalStorage cada cambio
+  //  Guardar en LocalStorage cada vez que cambie el carrito
   useEffect(() => {
-    localStorage.setItem('myCart', JSON.stringify(cart));
+    localStorage.setItem("sneakersCart", JSON.stringify(cart));
   }, [cart]);
 
-  //  Función: Agregar al carrito
+  // LÓGICA AGREGAR
   const addToCart = (product) => {
-    setCart((prevCart) => {
-      // Usamos 'cartId' si existe (viene del detalle), si no, usamos 'id' normal (viene de novedades/home)
-      const identifier = product.cartId || product.id; 
+    // Generamos un ID único combinando el ID del producto y la talla
+    const uniqueCartId = `${product.id}-${product.selectedSize}`;
 
-      // Buscamos si ya existe ese item ESPECÍFICO (Zapato + Talla)
-      const existingItem = prevCart.find((item) => (item.cartId || item.id) === identifier);
+    setCart((prevCart) => {
+      // Buscamos si ya existe EXACTAMENTE ese producto con esa talla
+      const existingItem = prevCart.find((item) => item.cartId === uniqueCartId);
 
       if (existingItem) {
+        // Si existe, sumamos cantidad
         return prevCart.map((item) =>
-          (item.cartId || item.id) === identifier
+          item.cartId === uniqueCartId
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       } else {
-        // Si no existe la talla específica, usamos una por defecto si viene de Home
-        const newProduct = {
-            ...product,
-            selectedSize: product.selectedSize || product.sizes[0] // Fallback a la primera talla si no se eligió
-        };
-        return [...prevCart, { ...newProduct, quantity: 1 }];
+        // Si no, lo agregamos con su nuevo ID único
+        return [
+          ...prevCart,
+          { ...product, cartId: uniqueCartId, quantity: 1 },
+        ];
       }
     });
   };
 
-  //  Función: Quitar del carrito
-  const removeFromCart = (productId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  // LÓGICA ELIMINAR
+  const removeFromCart = (uniqueId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.cartId !== uniqueId));
   };
 
-  //  Función: Actualizar cantidad (+ o -)
-  const updateQuantity = (productId, type) => {
-    setCart((prevCart) => {
-      return prevCart.map((item) => {
-        if (item.id === productId) {
-          const newQuantity = type === 'increase' ? item.quantity + 1 : item.quantity - 1;
-          // Si la cantidad llega a 0, no hacemos nada (o podrías eliminarlo)
-          return { ...item, quantity: Math.max(1, newQuantity) };
+  // LÓGICA CANTIDAD 
+  const updateQuantity = (uniqueId, type) => {
+    setCart((prevCart) =>
+      prevCart.map((item) => {
+        if (item.cartId === uniqueId) {
+          const newQuantity = type === "increase" ? item.quantity + 1 : item.quantity - 1;
+          return { ...item, quantity: Math.max(1, newQuantity) }; // Evita bajar de 1
         }
         return item;
-      });
-    });
+      })
+    );
   };
 
-  // Cálculos automáticos
+  // Totales
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
-  const cartTotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const cartTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ 
-        cart, 
-        addToCart, 
-        removeFromCart, 
-        updateQuantity, 
-        cartCount, 
-        cartTotal 
-    }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        cartCount,
+        cartTotal,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
-
-export const useCart = () => useContext(CartContext);

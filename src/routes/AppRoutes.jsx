@@ -1,4 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+
+//Layouts
 import MainLayout from '../components/layouts/MainLayout';
 
 //Importacion de paginas
@@ -10,6 +12,7 @@ import Collection from '../pages/Collection';
 import CollectionDetails from '../pages/CollectionDetails';
 import FavoritesSneakers from '../pages/favorites';
 import SneakersDetails from '../pages/SneakersDetails';
+import NotFound from '../pages/NotFound';
 
 const AppRoutes = () =>{
     return(
@@ -25,8 +28,9 @@ const AppRoutes = () =>{
             <Route path="/coleccion/:collectionId" element={<CollectionDetails/>}/>
             <Route path='/favoritos' element={<FavoritesSneakers/>}/>
             <Route path='/producto/:productId' element={<SneakersDetails/>}/>
-            {/*Ruta: Inicio*/}
-
+            {/*Ruta: 404 - Página no encontrada*/}
+            <Route path='/404' element={<NotFound/>}/>
+            {/*Fin de rutas*/}  
             </Route>
             </Routes>
     )

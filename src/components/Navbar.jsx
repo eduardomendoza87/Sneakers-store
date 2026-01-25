@@ -1,9 +1,9 @@
 import { Heart, ShoppingCart, Search, User, X, Menu, Trash2, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // 1. Agregamos Link
+import { useNavigate, Link } from 'react-router-dom';
 
 // Datos
-import products from '../data/products.json'; // 2. Importamos los productos para buscar
+import products from '../data/products.json';
 
 // Contexto
 import { useCart } from '../context/CartContext';
@@ -37,7 +37,7 @@ export default function Navbar() {
   // Formateador de moneda
   const formatPrice = (price) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(price);
 
-  // 3. LÓGICA DE BÚSQUEDA
+  // LÓGICA DE BÚSQUEDA
   const filteredProducts = searchQuery.length > 0 
     ? products.filter(product => 
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -141,7 +141,7 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* --- MODAL CARRITO --- */}
+      {/* MODAL CARRITO */}
       {isCartOpen && (
         <div className="fixed inset-0 z-60">
           <div
@@ -189,6 +189,8 @@ export default function Navbar() {
                       </div>
                       <div className="flex items-center justify-between mt-2">
                         <div className="flex items-center gap-3 bg-white/80 rounded-xl px-2 py-1 border border-espresso/10">
+                          
+                          {/* Botón Disminuir*/}
                           <button
                             onClick={() => updateQuantity(item.cartId || item.id, "decrease")}
                             className="p-1 hover:text-fuzzy disabled:opacity-30"
@@ -196,9 +198,12 @@ export default function Navbar() {
                           >
                             <Minus size={14} />
                           </button>
+                          
                           <span className="text-sm font-semibold w-4 text-center">
                             {item.quantity}
                           </span>
+                          
+                          {/* Botón Aumentar*/}
                           <button
                             onClick={() => updateQuantity(item.cartId || item.id, "increase")}
                             className="p-1 hover:text-fuzzy"
@@ -206,6 +211,8 @@ export default function Navbar() {
                             <Plus size={14} />
                           </button>
                         </div>
+
+                        {/* Botón Eliminar */}
                         <button
                           onClick={() => removeFromCart(item.cartId || item.id)}
                           className="flex items-center gap-1 text-xs text-red-500 hover:text-red-700 font-medium px-2 py-1 rounded-lg hover:bg-red-50 transition-colors"
@@ -246,14 +253,13 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* --- MODAL BÚSQUEDA (ACTUALIZADO) --- */}
+      {/* MODAL BÚSQUEDA */}
       {isSearchOpen && (
         <div className="fixed inset-0 z-60">
           <div
             className="absolute inset-0 bg-black/20 backdrop-blur-sm"
             onClick={() => setIsSearchOpen(false)}
           />
-          {/* Aumenté el ancho a w-96 para que quepan mejor los resultados */}
           <div className="absolute right-0 top-0 h-screen md:top-20 md:h-auto md:w-96 w-full bg-white md:rounded-2xl shadow-2xl p-6 flex flex-col max-h-[80vh]">
             
             <div className="flex items-center justify-between mb-6">
@@ -284,15 +290,13 @@ export default function Navbar() {
                                 <Link 
                                     to={`/producto/${product.id}`}
                                     key={product.id}
-                                    onClick={() => setIsSearchOpen(false)} // Cerrar al hacer click
+                                    onClick={() => setIsSearchOpen(false)}
                                     className="flex items-center gap-4 p-3 rounded-xl hover:bg-almond/50 transition-colors group border border-transparent hover:border-espresso/5"
                                 >
-                                    {/* Imagen pequeña */}
                                     <div className="w-16 h-16 bg-white rounded-lg p-1 flex items-center justify-center border border-espresso/10">
                                         <img src={product.images[0]} alt={product.name} className="w-full h-full object-contain" />
                                     </div>
                                     
-                                    {/* Info */}
                                     <div>
                                         <h4 className="font-clash font-semibold text-espresso text-sm group-hover:text-fuzzy transition-colors">
                                             {product.name}
@@ -304,13 +308,11 @@ export default function Navbar() {
                             ))}
                         </div>
                     ) : (
-                        // Estado Vacío (Sin resultados)
                         <div className="text-center py-10 text-espresso/50">
                             <p>No encontramos nada con "{searchQuery}"</p>
                         </div>
                     )
                 ) : (
-                    // Estado Inicial (Sin escribir nada)
                     <div className="text-center py-10 text-espresso/40 text-sm">
                         <p>Escribe nombre, marca o modelo...</p>
                     </div>
