@@ -50,7 +50,6 @@ export default function Navbar() {
     <nav className="w-full sticky top-0 z-50 bg-almond transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
-          
           {/* LOGO */}
           <div className="w-full md:w-auto text-center md:text-left">
             <h1
@@ -165,7 +164,7 @@ export default function Navbar() {
               {cart.length > 0 ? (
                 cart.map((item) => (
                   <div
-                    key={item.cartId || item.id} 
+                    key={item.cartId || item.id}
                     className="group relative bg-white/50 rounded-3xl p-4 flex gap-4 border border-white/60 shadow-sm"
                   >
                     <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center p-2">
@@ -181,7 +180,10 @@ export default function Navbar() {
                           {item.name}
                         </h3>
                         <p className="text-xs text-espresso/60 mt-1 uppercase">
-                          Talla: <span className="font-bold text-espresso">{item.selectedSize} MX</span>
+                          Talla:{" "}
+                          <span className="font-bold text-espresso">
+                            {item.selectedSize} MX
+                          </span>
                         </p>
                         <p className="text-sm font-bold text-espresso mt-1">
                           {formatPrice(item.price)}
@@ -189,23 +191,26 @@ export default function Navbar() {
                       </div>
                       <div className="flex items-center justify-between mt-2">
                         <div className="flex items-center gap-3 bg-white/80 rounded-xl px-2 py-1 border border-espresso/10">
-                          
                           {/* Botón Disminuir*/}
                           <button
-                            onClick={() => updateQuantity(item.cartId || item.id, "decrease")}
+                            onClick={() =>
+                              updateQuantity(item.cartId || item.id, "decrease")
+                            }
                             className="p-1 hover:text-fuzzy disabled:opacity-30"
                             disabled={item.quantity <= 1}
                           >
                             <Minus size={14} />
                           </button>
-                          
+
                           <span className="text-sm font-semibold w-4 text-center">
                             {item.quantity}
                           </span>
-                          
+
                           {/* Botón Aumentar*/}
                           <button
-                            onClick={() => updateQuantity(item.cartId || item.id, "increase")}
+                            onClick={() =>
+                              updateQuantity(item.cartId || item.id, "increase")
+                            }
                             className="p-1 hover:text-fuzzy"
                           >
                             <Plus size={14} />
@@ -241,7 +246,13 @@ export default function Navbar() {
                     {formatPrice(cartTotal)}
                   </span>
                 </div>
-                <button className="w-full bg-fuzzy text-white text-lg font-bold py-4 rounded-2xl shadow-xl shadow-fuzzy/30 hover:bg-copperfield hover:shadow-fuzzy/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                <button
+                  onClick={() => {
+                    setIsCartOpen(false); 
+                    navigate("/checkout"); 
+                  }}
+                  className="w-full bg-fuzzy text-white text-lg font-bold py-4 rounded-2xl shadow-xl shadow-fuzzy/30 hover:bg-copperfield hover:shadow-fuzzy/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                >
                   Ir a pagar
                 </button>
                 <p className="text-center text-xs text-espresso/40 mt-4">
@@ -261,7 +272,6 @@ export default function Navbar() {
             onClick={() => setIsSearchOpen(false)}
           />
           <div className="absolute right-0 top-0 h-screen md:top-20 md:h-auto md:w-96 w-full bg-white md:rounded-2xl shadow-2xl p-6 flex flex-col max-h-[80vh]">
-            
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-espresso">Buscar</h2>
               <button onClick={() => setIsSearchOpen(false)}>
@@ -283,42 +293,49 @@ export default function Navbar() {
 
             {/* LISTA DE RESULTADOS */}
             <div className="flex-1 overflow-y-auto pr-1">
-                {searchQuery.length > 0 ? (
-                    filteredProducts.length > 0 ? (
-                        <div className="space-y-3">
-                            {filteredProducts.map(product => (
-                                <Link 
-                                    to={`/producto/${product.id}`}
-                                    key={product.id}
-                                    onClick={() => setIsSearchOpen(false)}
-                                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-almond/50 transition-colors group border border-transparent hover:border-espresso/5"
-                                >
-                                    <div className="w-16 h-16 bg-white rounded-lg p-1 flex items-center justify-center border border-espresso/10">
-                                        <img src={product.images[0]} alt={product.name} className="w-full h-full object-contain" />
-                                    </div>
-                                    
-                                    <div>
-                                        <h4 className="font-clash font-semibold text-espresso text-sm group-hover:text-fuzzy transition-colors">
-                                            {product.name}
-                                        </h4>
-                                        <p className="text-xs text-espresso/50 uppercase tracking-wide">{product.brand}</p>
-                                        <p className="text-sm font-bold text-espresso mt-1">{formatPrice(product.price)}</p>
-                                    </div>
-                                </Link>
-                            ))}
+              {searchQuery.length > 0 ? (
+                filteredProducts.length > 0 ? (
+                  <div className="space-y-3">
+                    {filteredProducts.map((product) => (
+                      <Link
+                        to={`/producto/${product.id}`}
+                        key={product.id}
+                        onClick={() => setIsSearchOpen(false)}
+                        className="flex items-center gap-4 p-3 rounded-xl hover:bg-almond/50 transition-colors group border border-transparent hover:border-espresso/5"
+                      >
+                        <div className="w-16 h-16 bg-white rounded-lg p-1 flex items-center justify-center border border-espresso/10">
+                          <img
+                            src={product.images[0]}
+                            alt={product.name}
+                            className="w-full h-full object-contain"
+                          />
                         </div>
-                    ) : (
-                        <div className="text-center py-10 text-espresso/50">
-                            <p>No encontramos nada con "{searchQuery}"</p>
-                        </div>
-                    )
-                ) : (
-                    <div className="text-center py-10 text-espresso/40 text-sm">
-                        <p>Escribe nombre, marca o modelo...</p>
-                    </div>
-                )}
-            </div>
 
+                        <div>
+                          <h4 className="font-clash font-semibold text-espresso text-sm group-hover:text-fuzzy transition-colors">
+                            {product.name}
+                          </h4>
+                          <p className="text-xs text-espresso/50 uppercase tracking-wide">
+                            {product.brand}
+                          </p>
+                          <p className="text-sm font-bold text-espresso mt-1">
+                            {formatPrice(product.price)}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-10 text-espresso/50">
+                    <p>No encontramos nada con "{searchQuery}"</p>
+                  </div>
+                )
+              ) : (
+                <div className="text-center py-10 text-espresso/40 text-sm">
+                  <p>Escribe nombre, marca o modelo...</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

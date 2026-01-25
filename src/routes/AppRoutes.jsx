@@ -12,6 +12,7 @@ import Collection from '../pages/Collection';
 import CollectionDetails from '../pages/CollectionDetails';
 import FavoritesSneakers from '../pages/favorites';
 import SneakersDetails from '../pages/SneakersDetails';
+import Checkout from '../pages/Checkout';
 import NotFound from '../pages/NotFound';
 
 const AppRoutes = () =>{
@@ -28,6 +29,7 @@ const AppRoutes = () =>{
             <Route path="/coleccion/:collectionId" element={<CollectionDetails/>}/>
             <Route path='/favoritos' element={<FavoritesSneakers/>}/>
             <Route path='/producto/:productId' element={<SneakersDetails/>}/>
+            <Route path='/checkout' element={<Checkout/>}/>
             {/*Ruta: 404 - Página no encontrada*/}
             <Route path='/404' element={<NotFound/>}/>
             {/*Fin de rutas*/}  
