@@ -10,7 +10,7 @@ import MenCollection from '../pages/MenCollection';
 import WomenCollection from '../pages/WomenCollection';
 import Collection from '../pages/Collection';
 import CollectionDetails from '../pages/CollectionDetails';
-import FavoritesSneakers from '../pages/favorites';
+import FavoritesSneakers from '../pages/Favorites';
 import SneakersDetails from '../pages/SneakersDetails';
 import Checkout from '../pages/Checkout';
 import NotFound from '../pages/NotFound';
